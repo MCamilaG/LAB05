@@ -5,8 +5,10 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -17,10 +19,19 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "AlquilerItems")
 @SessionScoped
 public class AlquilerItemsBean implements Serializable {
-
     ServiciosAlquiler sp = ServiciosAlquiler.getInstance();
-
+    long multas=0;
+    
     public AlquilerItemsBean() {
     }
+    
+    public long getMultas(){
+        return  multas;
+    }
+    public void setMultas(long multa){
+        multas=multa;
+    }
+    
+    
 
 }
