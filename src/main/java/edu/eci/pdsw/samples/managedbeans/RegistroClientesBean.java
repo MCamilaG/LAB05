@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 import edu.eci.pdsw.samples.entities.Cliente;
+import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
@@ -37,12 +38,35 @@ public RegistroClientesBean() throws ExcepcionServiciosAlquiler {
       clientes=mitienda.consultarClientes();
       mensaje=new ArrayList<ElMensaje>() ;
       mensaje.add(new ElMensaje());
+      nombre="";
+      direccion="";
+      telefono="";
+      email="";
+      documento=0;
 }
     public List<Cliente> getClientes(){
         return clientes;
     }
     public Cliente getClienteseleccionado(){
         return clienteseleccionado;
+    }
+    public void setClienteseleccionado(Cliente clienteseleccionado){
+        this.clienteseleccionado=clienteseleccionado;
+    }
+    public void setNombre(String s){
+        nombre=s;
+    }
+    public void setDireccion(String s){
+        direccion=s;
+    }
+    public void setTelefono(String s){
+        telefono=s;
+    }
+    public void setEmail(String s){
+        email=s;
+    }
+    public void setDocumento(long l){
+        documento=l;
     }
     public String getNombre (){
         return nombre;
@@ -61,5 +85,22 @@ public RegistroClientesBean() throws ExcepcionServiciosAlquiler {
     }
     public ArrayList<ElMensaje> getMensaje(){
         return mensaje;
+    }
+    public void agregarCliente(){
+        if(!nombre.equals("")&&documento!=0&&!telefono.equals("")&&!direccion.equals("")&&!email.equals("")){
+            ArrayList<ItemRentado> list=new ArrayList<ItemRentado>();
+            Cliente cliente=new Cliente(nombre,documento,telefono,direccion,email,false,list);
+            try{
+            mitienda.registrarCliente(cliente);
+            clientes=mitienda.consultarClientes();
+            }
+            catch(Exception e){}
+            nombre="";
+            direccion="";
+            telefono="";
+            email="";
+            documento=0;
+        }
+        
     }
 }

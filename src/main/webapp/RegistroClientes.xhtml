@@ -6,7 +6,7 @@
     <h:head></h:head>
     <h:body>
       
-        <h:form id="losProductos" style="text-align: left;">
+        <h:form id="Clientesinter" style="text-align: left;">
             
            <p:dataTable    var="clientes" value="#{RegistroClientesBean.clientes}" selection="#{RegistroClientesBean.clienteseleccionado}" rowKey="#{clientes.nombre}"  >
            <f:facet name="header">
@@ -51,7 +51,7 @@
                     <p:inputText id="EmailCliente" value="#{RegistroClientesBean.email}" ></p:inputText>
                 </p:column>
             </p:dataTable>
-            
+            <p><p:commandButton  value="Agregar Cliente" update="Clientesinter" actionListener="#{RegistroClientesBean.agregarCliente()}" ></p:commandButton></p>
         </h:form>
     </h:body>
 </html>
