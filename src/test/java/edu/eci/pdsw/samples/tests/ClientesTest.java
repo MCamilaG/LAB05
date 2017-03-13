@@ -42,7 +42,7 @@ public class ClientesTest {
          ServiciosAlquilerItemsStub alquiler=new ServiciosAlquilerItemsStub();
          try{
              alquiler.registrarCliente(cliente);
-             assertEquals("El cliente no exixste",alquiler.consultarClientes().size(),1);
+             assertEquals("El cliente no existe",alquiler.consultarClientes().size(),4);
          }catch(Exception e){}
     }
     
@@ -63,7 +63,7 @@ public class ClientesTest {
             assertEquals("El cliente no existe",cliente.getTelefono(),pruebaCliente.getTelefono());
             assertEquals("El cliente no existe",cliente.getDireccion(),pruebaCliente.getDireccion());
             assertEquals("El cliente no existe",cliente.getEmail(),pruebaCliente.getEmail());
-            assertEquals("El cliente no existe",alquiler.consultarClientes().size(),1);
+            assertEquals("El cliente no existe",alquiler.consultarClientes().size(),4);
             
         }catch(Exception e){}
     } 
@@ -90,7 +90,7 @@ public class ClientesTest {
             assertEquals("El cliente no existe",cliente.getEmail(),pruebaCliente.getEmail());
             assertEquals("El cliente no existe",cliente.isVetado(),pruebaCliente.isVetado());
             assertEquals("El cliente no existe",cliente.getRentados(),pruebaCliente.getRentados());
-            assertEquals("El cliente no existe",alquiler.consultarClientes().size(),1);
+            assertEquals("El cliente no existe",alquiler.consultarClientes().size(),4);
             
         }catch(Exception e){}     
         
@@ -118,7 +118,7 @@ public class ClientesTest {
             assertEquals("El cliente no existe",cliente.getEmail(),pruebaCliente.getEmail());
             assertEquals("El cliente no existe",cliente.isVetado(),pruebaCliente.isVetado());
             assertEquals("El cliente no existe",cliente.getRentados(),pruebaCliente.getRentados());
-            assertEquals("El cliente no existe",alquiler.consultarClientes().size(),1);
+            assertEquals("El cliente no existe",alquiler.consultarClientes().size(),4);
             alquiler.registrarCliente(cliente);
         }catch (Exception e){
             assertTrue("No exixste la excepcion",true);

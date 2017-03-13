@@ -33,13 +33,14 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
     private final Map<Integer,Long> mapaPrestamosPorIdCliente;
     
    
-    public ServiciosAlquilerItemsStub() {
+    public ServiciosAlquilerItemsStub()  {
         clientes = new HashMap<>();
         itemsDisponibles = new HashMap<>();
         itemsrentados = new HashMap<>();
         tipositems = new HashMap<>();
         mapaPrestamosPorIdCliente=new HashMap<>();
-        //poblar();
+        poblar();
+        
     }
 
     @Override
@@ -137,7 +138,7 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
         
         ItemRentado ir=new ItemRentado(item,date,java.sql.Date.valueOf(ld2));
 
-        if (clientes.containsKey(docu)) {
+        if (clientes.containsKey(docu)&& itemsDisponibles.containsKey(item.getId())){
             Cliente c = clientes.get(docu);
             c.getRentados().add(ir);
             itemsDisponibles.remove(ir.getItem().getId());
@@ -232,7 +233,7 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
     
     
     
-    private void poblar() {
+    private void poblar()  {
         
         TipoItem ti1=new TipoItem(1,"Video");
         TipoItem ti2=new TipoItem(2,"Juego");
@@ -245,20 +246,19 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
         Item i1=new Item(ti1, 1, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");
         Item i2=new Item(ti2, 2, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
         Item i3=new Item(ti3, 3, "Thriller", "Thriller es una canción interpretada por el cantante estadounidense Michael Jackson, compuesta por Rod Temperton y producida por Quincy Jones.", java.sql.Date.valueOf("1984-01-11"), 2000, "DVD", "Pop");
-        Item i4=new Item(ti1, 4, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");
-        Item i5=new Item(ti2, 5, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
-        Item i6=new Item(ti3, 6, "Thriller", "Thriller es una canción interpretada por el cantante estadounidense Michael Jackson, compuesta por Rod Temperton y producida por Quincy Jones.", java.sql.Date.valueOf("1984-01-11"), 2000, "DVD", "Pop");
-        //items.put(1, i1);
-        //items.put(2, i2);
-        //items.put(3, i3);
-        itemsDisponibles.put(4, i4);
-        itemsDisponibles.put(5, i5);
-        itemsDisponibles.put(6, i6);
-        
+        //Item i4=new Item(ti1, 4, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");
+        //Item i5=new Item(ti2, 5, "Halo 3", "Halo 3 es un videojuego de disparos en primera persona desarrollado por Bungie Studios.", java.sql.Date.valueOf("2007-09-08"), 3000, "DVD", "Shooter");
+        //Item i6=new Item(ti3, 6, "Thriller", "Thriller es una canción interpretada por el cantante estadounidense Michael Jackson, compuesta por Rod Temperton y producida por Quincy Jones.", java.sql.Date.valueOf("1984-01-11"), 2000, "DVD", "Pop");
+        try{
+        this.registrarItem(i1);
+        this.registrarItem(i2);
+        this.registrarItem(i3);}
+        catch(Exception e){}
         
         ItemRentado ir1=new ItemRentado(i1, java.sql.Date.valueOf("2017-01-01"), java.sql.Date.valueOf("2017-03-12"));
         ItemRentado ir2=new ItemRentado(i2, java.sql.Date.valueOf("2017-01-04"), java.sql.Date.valueOf("2017-04-7"));
         ItemRentado ir3=new ItemRentado(i1, java.sql.Date.valueOf("2017-01-07"), java.sql.Date.valueOf("2017-07-12"));
+        
         
         ArrayList<ItemRentado> list1 = new ArrayList<>();
         list1.add(ir1);
@@ -266,14 +266,17 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
         list2.add(ir2);
         ArrayList<ItemRentado> list3 = new ArrayList<>();
         list3.add(ir3);
-
+       
         
         Cliente c1=new Cliente("Oscar Alba", 1026585664, "6788952", "KRA 109#34-C30", "oscar@hotmail.com", false,list1);
         Cliente c2=new Cliente("Carlos Ramirez", 1026585663, "6584562", "KRA 59#27-a22", "carlos@hotmail.com", false,list2);
         Cliente c3=new Cliente("Ricardo Pinto", 1026585669, "4457863", "KRA 103#94-a77", "ricardo@hotmail.com", false,list3);
-        clientes.put(c1.getDocumento(), c1);
-        clientes.put(c2.getDocumento(), c2);
-        clientes.put(c3.getDocumento(), c3);
+        try{
+        this.registrarCliente(c1);
+        this.registrarCliente(c2);
+        this.registrarCliente(c3);
+        }
+        catch(Exception x){}
 
     }
 
