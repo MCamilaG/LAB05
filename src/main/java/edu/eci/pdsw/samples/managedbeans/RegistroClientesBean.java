@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.eci.pdsw.samples.managedbeans;
+import com.sun.media.jfxmedia.logging.Logger;
 import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
@@ -13,6 +14,7 @@ import edu.eci.pdsw.samples.services.ServiciosAlquilerItemsStub;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 /**
@@ -69,19 +71,19 @@ public RegistroClientesBean() throws ExcepcionServiciosAlquiler {
         documento=l;
     }
     public String getNombre (){
-        return nombre;
+        return "";
     }
     public long  getDocumento(){
         return documento;
     }
     public String getTelefono(){
-        return telefono;
+        return "";
     }
     public String getDireccion(){
-        return direccion;
+        return "";
     }
     public String getEmail(){
-        return email;
+        return "";
     }
     public ArrayList<ElMensaje> getMensaje(){
         return mensaje;
@@ -102,5 +104,10 @@ public RegistroClientesBean() throws ExcepcionServiciosAlquiler {
             documento=0;
         }
         
+    }
+    public String cambiarVista(long id) {
+        this.documento = id;
+        Logger.logMsg(Logger.DEBUG, "*Id del usuario: "+documento);
+        return "RegistroClienteItem.xhtml";
     }
 }

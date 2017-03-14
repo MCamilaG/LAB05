@@ -9,26 +9,28 @@
         <h:form id="Clientesinter" style="text-align: left;">
             
            <p:dataTable    var="clientes" value="#{RegistroClientesBean.clientes}" selection="#{RegistroClientesBean.clienteseleccionado}" rowKey="#{clientes.nombre}"  >
-           <f:facet name="header">
-                Clientes
-           </f:facet>
-           <p:column selectionMode="single" style="width:16px;text-align:center"/> 
-            <p:column headerText="Nombre">
-                <h:outputText value="#{clientes.nombre}" />
-            </p:column>
-            <p:column headerText="Documento">
-            <h:outputText value="#{clientes.documento}" />
-             </p:column>
-            <p:column headerText="telefono">
-            <h:outputText value="#{clientes.telefono}" />
-            </p:column>
-            <p:column headerText="Vetado">
-                <h:outputText value="#{clientes.vetado}" />
-            </p:column>
-           
-           
+                <f:facet name="header">
+                     Clientes
+                </f:facet>
+                <p:column selectionMode="single" style="width:16px;text-align:center"/> 
+                 <p:column headerText="Nombre">
+                     <h:outputText value="#{clientes.nombre}" />
+                 </p:column>
+                 <p:column headerText="Documento">
+                 <h:outputText value="#{clientes.documento}" />
+                  </p:column>
+                 <p:column headerText="telefono">
+                 <h:outputText value="#{clientes.telefono}" />
+                 </p:column>
+                 <p:column headerText="Vetado">
+                     <h:outputText value="#{clientes.vetado}" />
+                 </p:column>
+                <p:column style="width:100px">
+                    <p:commandButton action ="#{RegistroClientesBean.cambiarVista(clientes.documento)}" title="Mostrar" value="Mostrar" />
+                </p:column>
             </p:dataTable>
-                <p:dataTable   var="ingresedatos" value="#{RegistroClientesBean.mensaje}"  rowKey="#{ingresedatos.mensaje}"  >
+                
+            <p:dataTable   var="ingresedatos" value="#{RegistroClientesBean.mensaje}"  rowKey="#{ingresedatos.mensaje}"  >
                 <f:facet name="header">
                 Agregar Cliente
                  </f:facet>

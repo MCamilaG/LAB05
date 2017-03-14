@@ -5,13 +5,14 @@
     <h:head></h:head>
 
     <h:body>
-    <p:layout style="min-width:400px;min-height:200px;">
+    <h:form id="Alquileres">
+
     <p:layoutUnit position="west" resizable="true"  minSize="40" maxSize="400">
         <div align='center'>
             <h3>CLIENTE</h3>
             <br></br>
             Nombre 
-            <p:outputLabel id="nombre_cliente" value="#{AlquilerItemS.nombrec}" />
+            <p:outputLabel id="nombre_cliente" value="#{AlquilerItems.nombrec}" />
             <br></br>
             Id 
             <p:outputLabel id="id_cliente" value="#{AlquilerItems.identificacionc}" />
@@ -24,7 +25,8 @@
             <br></br>
         </div>
     </p:layoutUnit>
-    </p:layout> 
+    
+    </h:form>
     </h:body>
 
 </html>

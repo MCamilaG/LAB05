@@ -1,5 +1,6 @@
 package edu.eci.pdsw.samples.services;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
@@ -34,6 +35,7 @@ public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Ser
     
    
     public ServiciosAlquilerItemsStub()  {
+        Logger.setLevel(Logger.DEBUG);
         clientes = new HashMap<>();
         itemsDisponibles = new HashMap<>();
         itemsrentados = new HashMap<>();
