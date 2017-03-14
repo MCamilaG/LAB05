@@ -71,19 +71,19 @@ public RegistroClientesBean() throws ExcepcionServiciosAlquiler {
         documento=l;
     }
     public String getNombre (){
-        return "";
+        return nombre;
     }
     public long  getDocumento(){
         return documento;
     }
     public String getTelefono(){
-        return "";
+        return telefono;
     }
     public String getDireccion(){
-        return "";
+        return direccion;
     }
     public String getEmail(){
-        return "";
+        return email;
     }
     public ArrayList<ElMensaje> getMensaje(){
         return mensaje;
