@@ -54,26 +54,31 @@ public class AlquilerItemsBean implements Serializable {
         String nom = "";
         
         try {
-            nom=sp.consultarCliente(getIdentificacionc()).getNombre();
+            Cliente c = sp.consultarCliente(getIdentificacionc());
+            if (c == null) {
+                Logger.logMsg(Logger.ERROR, "El resultado de consultar cliente es null (" + getIdentificacionc() + ")");
+            }
+            nom = c != null ? c.getNombre() : "null";
         } catch (ExcepcionServiciosAlquiler ex) {
             java.util.logging.Logger.getLogger(AlquilerItemsBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Logger.logMsg(Logger.DEBUG, "Se consiguio el nombre " + nom);
+        
+        Logger.logMsg(Logger.DEBUG, "(AlquilerIteamsBean) Se consiguio el nombre " + nom);
         return nom;
     }
     
     public void setNombrec(String nombre){
-        Logger.logMsg(Logger.DEBUG, "Se coloco el nombre" + nombre);
+        Logger.logMsg(Logger.DEBUG, "(AlquilerIteamsBean) Se coloco el nombre" + nombre);
         nombrec=nombre;
     }
     
     public long getIdentificacionc(){
-        Logger.logMsg(Logger.DEBUG, "Se consiguio la identificacion " + getCliente().getDocumento());
+        Logger.logMsg(Logger.DEBUG, "(AlquilerIteamsBean) Se consiguio la identificacion " + getCliente().getDocumento());
         return getCliente().getDocumento();
     }
     
     public void setIdentificacionc(long id){
-        Logger.logMsg(Logger.DEBUG, "Se coloco la identificacion " + id);
+        Logger.logMsg(Logger.DEBUG, "(AlquilerIteamsBean) Se coloco la identificacion " + id);
         identificacionc=id;
     }
     
@@ -103,12 +108,6 @@ public class AlquilerItemsBean implements Serializable {
     public void setMultas(long multa){
         Logger.logMsg(Logger.DEBUG, "Se coloco la multa " + multa);
         multas=multa;
-    }
-    
-    public List<Cliente> getClientes() throws ExcepcionServiciosAlquiler{
-        List<Cliente> clientes= new ArrayList<Cliente>();
-        clientes = getCliente().getClientes();
-        return  clientes;
     }
     
     public List<ItemRentado> getRentados() throws ExcepcionServiciosAlquiler{
