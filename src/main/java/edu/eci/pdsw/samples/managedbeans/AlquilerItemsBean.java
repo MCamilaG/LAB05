@@ -32,12 +32,17 @@ public class AlquilerItemsBean implements Serializable {
     private RegistroClientesBean cliente;    
     ServiciosAlquiler sp = ServiciosAlquiler.getInstance();
     long multas=0;
-    long cotizacion=0;
+    private long cotizacion=0;
     String nombrec=null;
     long identificacionc=0 ;
-    int idit=0;
+    private int idit=0;
+    private int dias=0;
+    List<ItemRentado> rentados= new ArrayList<ItemRentado>();
+    private ArrayList<ElMensaje> mensaje;
     
     public AlquilerItemsBean() {
+        mensaje=new ArrayList<ElMensaje>();
+        mensaje.add(new ElMensaje());
     }
     
     @PostConstruct
@@ -48,6 +53,10 @@ public class AlquilerItemsBean implements Serializable {
         } else {
             Logger.logMsg(Logger.ERROR, "El cliente es nulo en metodo init de " + this.getClass().getName());
         }
+    }
+    
+    public ArrayList<ElMensaje> getMensaje(){
+        return mensaje;
     }
     
     public String getNombrec(){
@@ -111,22 +120,25 @@ public class AlquilerItemsBean implements Serializable {
     }
     
     public List<ItemRentado> getRentados() throws ExcepcionServiciosAlquiler{
-        List<ItemRentado> rentados= new ArrayList<ItemRentado>();
-        rentados=sp.consultarItemsCliente(identificacionc);
+        this.rentados=sp.consultarItemsCliente(identificacionc);
         return  rentados;
     }
     
-    public void cotizacion(int id,int dias){
+    public void setRentados(List<ItemRentado> items){
+        this.rentados=items;
+    }
+    
+    public void cotizacion(){
         List<Item> disponibles = sp.consultarItemsDisponibles();
         boolean existe = false;
         for(int i=0; i< disponibles.size();i++){
-            if(disponibles.get(i).getId() == id){
+            if(disponibles.get(i).getId() == idit){
                 existe = true;
             } 
         }
         if(existe){
             try{
-                cotizacion =sp.consultarCostoAlquiler(id, dias);
+                setCotizacion(sp.consultarCostoAlquiler(idit, dias));
             }
             catch(Exception e){
             }
@@ -134,14 +146,15 @@ public class AlquilerItemsBean implements Serializable {
         
     }
     
-    public void agregarAlquiler(int id, int dias) throws ExcepcionServiciosAlquiler{
+    public void agregarAlquiler() throws ExcepcionServiciosAlquiler{
+        Logger.logMsg(Logger.DEBUG, "Se agrego alquiler");
         Cliente clienten = sp.consultarCliente(identificacionc);
-        Item item = sp.consultarItem(id);
+        Item item = sp.consultarItem(idit);
         java.util.Date fecha = new Date();
         java.sql.Date sfecha = new java.sql.Date(fecha.getTime());
         long documento = clienten.getDocumento();
         sp.registrarAlquilerCliente(sfecha, documento, item, dias);
-        cotizacion=0;
+        setCotizacion(0);
     }
 
     /**
@@ -156,6 +169,34 @@ public class AlquilerItemsBean implements Serializable {
      */
     public void setCliente(RegistroClientesBean cliente) {
         this.cliente = cliente;
+    }
+
+    /**
+     * @return the idit
+     */
+    public int getIdit() {
+        return idit;
+    }
+
+    /**
+     * @param idit the idit to set
+     */
+    public void setIdit(int idit) {
+        this.idit = idit;
+    }
+
+    /**
+     * @return the dias
+     */
+    public int getDias() {
+        return dias;
+    }
+
+    /**
+     * @param dias the dias to set
+     */
+    public void setDias(int dias) {
+        this.dias = dias;
     }
     
     

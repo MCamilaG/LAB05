@@ -25,6 +25,45 @@
             <br></br>
         </div>
     </p:layoutUnit>
+    <p:layoutUnit position="center">
+        <p:dataTable var="alquiler" value="#{AlquilerItems.rentados}">
+            <f:facet name="header">
+                Alquileres
+            </f:facet>
+            <p:column headerText="Id">
+                <h:outputText value="#{alquiler.item.id}" />
+            </p:column>
+             <p:column headerText="Nombre">
+                <h:outputText value="#{alquiler.item.nombre}" />
+            </p:column>
+             <p:column headerText="Fecha de inicio">
+                <h:outputText value="#{alquiler.fechainiciorenta}" />
+            </p:column>
+             <p:column headerText="Fecha de fin">
+                <h:outputText value="#{alquiler.fechafinrenta}" />
+            </p:column>
+        </p:dataTable>
+    </p:layoutUnit>
+        <p:layoutUnit position="center">
+            <p:dataTable   var="ingreseitems" value="#{AlquilerItems.mensaje}"  >
+                <f:facet name="header">
+                Agregar Alquiler
+                </f:facet>
+                <p:column headerText="ID">
+                     <p:inputText id="NombreItem" value="#{AlquilerItems.idit}" ></p:inputText>
+                </p:column>
+                <p:column headerText="DIAS">
+                     <p:inputText id="Dias" value="#{AlquilerItems.dias}" ></p:inputText>
+                </p:column>
+            </p:dataTable>
+            <p:commandButton id="alquilarN" value="COTIZAR" update="cotizacion" actionListener="#{AlquilerItems.cotizacion}">
+            </p:commandButton>
+            <p:outputLabel id="cotizacion" value="#{AlquilerItems.cotizacion}">
+            </p:outputLabel>
+            <p:commandButton id="aceptar" value="Agregar" update=":Alquileres,cotizacion" actionListener="#{AlquilerItems.agregarAlquiler()}">
+            </p:commandButton>
+           
+        </p:layoutUnit>
     
     </h:form>
     </h:body>
