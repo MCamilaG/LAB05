@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import com.sun.media.jfxmedia.logging.Logger;
+import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
 import java.util.logging.Level;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -30,7 +31,7 @@ import javax.faces.bean.RequestScoped;
 public class AlquilerItemsBean implements Serializable {
     @ManagedProperty(value="#{RegistroClientesBean}")
     private RegistroClientesBean cliente;    
-    ServiciosAlquiler sp = ServiciosAlquiler.getInstance();
+    ServiciosAlquiler sp = ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
     long multas=0;
     private long cotizacion=0;
     String nombrec=null;

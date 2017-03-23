@@ -20,7 +20,7 @@ import java.util.Map;
  *
  * @author 2106913
  */
-public class ServiciosAlquilerItemsStub extends ServiciosAlquiler implements Serializable{
+public class ServiciosAlquilerItemsStub implements Serializable,ServiciosAlquiler{
     
     private static final int MULTA_DIARIA=5000;
     private final static long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;

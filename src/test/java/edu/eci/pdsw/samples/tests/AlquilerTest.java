@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
+import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerItemsStub;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class AlquilerTest {
     
     @Test
     public void CF1Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 44, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Perez",3842,"24234","calle 123","aa@gmail.com"));
@@ -62,7 +63,7 @@ public class AlquilerTest {
 
     @Test
     public void CE1Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 55, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Perez",9843,"24234","calle 123","aa@gmail.com"));
@@ -79,7 +80,7 @@ public class AlquilerTest {
     }
     @Test
     public void CE2Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 55, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Andrade",9823,"24234","calle 13","aa@gmail.com"));
@@ -108,7 +109,7 @@ public class AlquilerTest {
     }
     @Test
     public void CE3Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 55, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Andrade 2",2107990,"30144543","calle crack","aa@gmail.com"));
@@ -125,7 +126,7 @@ public class AlquilerTest {
     }
     @Test
     public void CE4Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 57, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Andrade 3",2107991,"30144543","calle crack","aa@gmail.com"));
@@ -151,7 +152,7 @@ public class AlquilerTest {
     }
     
     public void CE5Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 58, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Andrade 3",2107992,"30144543","calle crack","aa@gmail.com"));
@@ -176,7 +177,7 @@ public class AlquilerTest {
         }   
     }
     public void CE6Test() throws ExcepcionServiciosAlquiler{
-        ServiciosAlquiler sa=ServiciosAlquilerItemsStub.getInstance();
+        ServiciosAlquiler sa=ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
         
         Item i1=new Item(sa.consultarTipoItem(1), 59, "Los 4 Fantasticos", "Los 4 Fantásticos  es una película de superhéroes  basada en la serie de cómic homónima de Marvel.", java.sql.Date.valueOf("2005-06-08"), 2000, "DVD", "Ciencia Ficcion");        
         sa.registrarCliente(new Cliente("Juan Andrade 3",2107993,"30144543","calle crack","aa@gmail.com"));

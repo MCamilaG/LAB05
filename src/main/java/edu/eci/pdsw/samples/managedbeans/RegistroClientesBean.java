@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
+import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerItemsStub;
 import java.io.Serializable;
@@ -36,7 +37,7 @@ public class RegistroClientesBean {
     private ArrayList<ElMensaje> mensaje;
     
 public RegistroClientesBean() throws ExcepcionServiciosAlquiler {
-      mitienda = ServiciosAlquiler.getInstance();
+      mitienda = ServiciosAlquilerFactory.getInstance().getServiciosAlquiler();
       //clientes=mitienda.consultarClientes();
       mensaje=new ArrayList<ElMensaje>() ;
       mensaje.add(new ElMensaje());
